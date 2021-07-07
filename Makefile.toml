@@ -1,0 +1,27 @@
+[env]
+PORT = "9090"
+
+[tasks.build]
+description = "Build app"
+install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V" }
+command = "wasm-pack"
+args = ["build", "--target", "web", "--out-name", "package", "--dev"]
+
+[tasks.build_release]
+description = "Build app"
+install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V" }
+command = "wasm-pack"
+args = ["build", "--target", "web", "--out-name", "package", "--release"]
+
+[tasks.serve]
+description = "Start server"
+install_crate = { crate_name = "microserver", binary = "microserver", test_arg = "-V" }
+command = "microserver"
+args = ["--port", "${PORT}"]
+
+[tasks.watch]
+description = "Watch files and recompile the project on change"
+run_task = [
+  { name = "build" },
+]
+watch = true

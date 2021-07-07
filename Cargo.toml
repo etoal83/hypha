@@ -1,9 +1,14 @@
 [package]
 name = "hypha"
 version = "0.1.0"
-authors = ["etoal83 <etoal83@gmail.com>"]
+authors = ["EtoAl <etoal83@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
+seed = { git = "https://github.com/seed-rs/seed", branch = "master" }
+seed_styles = { git = "https://github.com/seed-rs/styles_hooks", package = "seed_styles", branch = "main" }
+seed_hooks = { git = "https://github.com/seed-rs/styles_hooks", package = "seed_hooks", branch = "main" }
